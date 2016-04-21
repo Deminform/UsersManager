@@ -45,25 +45,46 @@
         .tg .tg-4eph {
             background-color: #f9f9f9
         }
+        #textC {
+            font-family: Century Gothic;
+        }
+        .textC {
+            font-family: Century Gothic;
+        }
     </style>
 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-<h1>User Details</h1>
-
-<table class="tg">
+<table width="90%" height="545" border="0" align="center" cellpadding="0" cellspacing="0" class="textC">
     <tr>
-        <th width="80">ID</th>
-        <th width="120">Name</th>
-        <th width="120">Is Admin</th>
-        <th width="120">Age</th>
+        <td height="15%" colspan="3" align="center" valign="top"><div align="center"><img src="http://s017.radikal.ru/i440/1604/b9/0942a8ad4d74.jpg" width="658" height="125" align="top"></div></td>
     </tr>
     <tr>
-        <td>${user.id}</td>
-        <td>${user.name}</td>
-        <td>${user.isadmin}</td>
-        <td>${user.age/100}${user.age%100}</td>
+        <td height="10" colspan="3"><div align="center"><strong>User Details</strong></div></td>
+    </tr>
+    <tr>
+        <td width="20%" height="70%" align="left" valign="middle"><a href="/users"><img src="http://s019.radikal.ru/i631/1604/62/4d64edc2dca8.png" width="61" height="61" longdesc="../users" align="left"></a></td>
+        <td width="60%" height="70%" align="center" valign="middle"><table align="center" class="tg">
+            <tr>
+                <th width="80" align="center" valign="middle">ID</th>
+                <th width="120" align="center" valign="middle">Name</th>
+                <th width="120" align="center" valign="middle">Is Admin</th>
+                <th width="120" align="center" valign="middle">Age</th>
+            </tr>
+            <tr>
+                <td align="center" valign="middle">${user.id}</td>
+                <td align="center" valign="middle">${user.name}</td>
+                <td align="center" valign="middle">${user.isAdmin.toString()}</td>
+                <td align="center" valign="middle">${user.age}</td>
+            </tr>
+        </table></td>
+        <td width="20%" height="70%" align="right" valign="middle">&nbsp;</td>
+    </tr>
+    <tr>
+        <td height="30%" colspan="3" align="center" valign="bottom"><img src="http://s019.radikal.ru/i640/1604/f3/db4ef9798304.jpg" width="658" height="223" align="middle"></td>
     </tr>
 </table>
+<p>&nbsp;</p>
 </body>
 </html>

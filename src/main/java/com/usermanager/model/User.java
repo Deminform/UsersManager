@@ -3,7 +3,7 @@ package com.usermanager.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "test")
 public class User {
 
     @Id
@@ -16,48 +16,48 @@ public class User {
     @Column(name = "age")
     private int age;
 
-    @Column(name = "isadmin")
-    private String isadmin;
+    @Column(name = "isAdmin", columnDefinition = "BIT")
+    private String isAdmin;
 
     public int getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getIsadmin() {
-        return isadmin;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getAge() {
+        return age;
     }
 
     public void setAge(int age) {
         this.age = age;
     }
 
-    public void setIsadmin(String isadmin) {
-        this.isadmin = isadmin;
+    public String getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(String isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "isadmin='" + isadmin + '\'' +
-                ", age=" + age +
+                "id=" + id +
                 ", name='" + name + '\'' +
-                ", id=" + id +
+                ", age=" + age +
+                ", isAdmin='" + isAdmin + '\'' +
                 '}';
     }
 }

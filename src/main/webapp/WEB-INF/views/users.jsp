@@ -2,6 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 <%@ page session="false" %>
 <html>
 <head>
@@ -44,46 +45,58 @@
         .tg .tg-4eph {
             background-color: #f9f9f9
         }
+        .text {
+            font-family: Palatino Linotype, Book Antiqua, Palatino, serif;
+        }
+        textC {
+            font-family: Century Gothic;
+        }
+        txtxt {
+            font-family: Century Gothic;
+        }
+        .c-text {
+            font-family: Century Gothic;
+        }
     </style>
 </head>
-<body>
-<a href="../../index.jsp">Back to main menu</a>
-
 <br/>
-<br/>
-
-<h1>User List</h1>
+<body class="text">
+<h1 align="center" class="c-text">User List</h1>
 
 <c:if test="${!empty listUsers}">
-    <table class="tg">
-        <tr>
-            <th width="80">ID</th>
-            <th width="120">Name</th>
-            <th width="120">Is Admin</th>
-            <th width="120">Age</th>
-            <th width="60">Edit</th>
-            <th width="60">Delete</th>
-        </tr>
-        <c:forEach items="${listUsers}" var="user">
-            <tr>
-                <td>${user.id}</td>
-                <td><a href="/userdata/${user.id}" target="_blank">${user.name}</a></td>
-                <td>${user.isadmin}</td>
-                <td>${user.age/100}${user.age%100}</td>
-                <td><a href="<c:url value='/edit/${user.id}'/>">Edit</a></td>
-                <td><a href="<c:url value='/remove/${user.id}'/>">Delete</a></td>
+    <div align="center">
+        <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr align="center">
+                <td width="20%" align="left" valign="middle"><a href="../../index.jsp" class="c-text"><img src="http://s019.radikal.ru/i631/1604/62/4d64edc2dca8.png" width="61" height="61"></a></td>
+                <td width="60%" align="center" valign="middle"><table align="center" class="tg">
+                    <tr>
+                        <th width="74" align="center" valign="middle"><div align="center"><strong><span class="c-text">ID</span></strong></div></th>
+                        <th width="172" align="center" valign="middle"><div align="center"><strong><span class="c-text">Name</span></strong></div></th>
+                        <th width="67" align="center" valign="middle"><div align="center"><strong><span class="c-text">Edit</span></strong></div></th>
+                        <th width="87" align="center" valign="middle"><div align="center"><strong><span class="c-text">Delete</span></strong></div></th>
+                    </tr>
+                    <c:forEach items="${listUsers}" var="user">
+                        <tr>
+                            <td align="center" valign="middle"><div align="center"><span class="c-text">${user.id}</span></div></td>
+                            <td align="center" valign="middle"><div align="center"><span class="c-text"><a href="/userdata/${user.id}" target="_parent">${user.name}</a></span></div></td>
+                            <td align="center" valign="middle"><div align="center"><span class="c-text"><a href="<c:url value='/edit/${user.id}'/>">Edit</a></span></div></td>
+                            <td align="center" valign="middle"><div align="center"><span class="c-text"><a href="<c:url value='/remove/${user.id}'/>">Delete</a></span></div></td>
+                        </tr>
+                    </c:forEach>
+                </table></td>
+                <td width="20%" align="right" valign="middle">&nbsp;</td>
             </tr>
-        </c:forEach>
-    </table>
+        </table>
+    </div>
 </c:if>
 
 
-<h1>Add a User</h1>
+<h1 align="center" class="tg"><span class="c-text">Add a User</span></h1>
 
 <c:url var="addAction" value="/users/add"/>
 
 <form:form action="${addAction}" commandName="user">
-    <table>
+    <div align="center"><table align="center">
         <c:if test="${!empty user.name}">
             <tr>
                 <td>
@@ -109,16 +122,6 @@
         </tr>
         <tr>
             <td>
-                <form:label path="isadmin">
-                    <spring:message text="Admin"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="isadmin"/>
-            </td>
-        </tr>
-        <tr>
-            <td>
                 <form:label path="age">
                     <spring:message text="Age"/>
                 </form:label>
@@ -128,18 +131,29 @@
             </td>
         </tr>
         <tr>
+            <td>
+                <form:label path="isAdmin">
+                    <spring:message text="Admin"/>
+                </form:label>
+            </td>
+            <td>
+                <input:checkbox path="isAdmin" value="true" label=" yes"/>
+                <%--<form:checkboxes items="${user.isAdmin}" path="isAdmin"/>--%>
+            </td>
+        </tr>
+        <tr>
             <td colspan="2">
                 <c:if test="${!empty user.name}">
-                    <input type="submit"
-                           value="<spring:message text="Edit User"/>"/>
+                    <input type="submit" value="<spring:message text="Edit User"/>"/>
                 </c:if>
                 <c:if test="${empty user.name}">
-                    <input type="submit"
-                           value="<spring:message text="Add User"/>"/>
+                    <input type="submit" value="<spring:message text="Add User"/>"/>
                 </c:if>
             </td>
         </tr>
-    </table>
+    </table><img src="http://s013.radikal.ru/i322/1604/37/3a73ada63cfc.jpg" width="500" height="157" align="absbottom">    </div>
 </form:form>
+
 </body>
 </html>
+
