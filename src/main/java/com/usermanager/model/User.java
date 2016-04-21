@@ -1,6 +1,9 @@
 package com.usermanager.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "test")
@@ -16,8 +19,16 @@ public class User {
     @Column(name = "age")
     private int age;
 
-    @Column(name = "isAdmin", columnDefinition = "BIT")
-    private String isAdmin;
+    @Column(name = "isAdmin", columnDefinition = "BIT", length = 1)
+    private boolean isAdmin;
+
+    public boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean admin) {
+        isAdmin = admin;
+    }
 
     public int getId() {
         return id;
@@ -43,14 +54,6 @@ public class User {
         this.age = age;
     }
 
-    public String getIsAdmin() {
-        return isAdmin;
-    }
-
-    public void setIsAdmin(String isAdmin) {
-        this.isAdmin = isAdmin;
-    }
-
     @Override
     public String toString() {
         return "User{" +
@@ -60,4 +63,6 @@ public class User {
                 ", isAdmin='" + isAdmin + '\'' +
                 '}';
     }
+
+
 }
