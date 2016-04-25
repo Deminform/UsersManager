@@ -83,7 +83,21 @@
                             <td align="center" valign="middle"><div align="center"><span class="c-text"><a href="<c:url value='/remove/${user.id}'/>">Delete</a></span></div></td>
                         </tr>
                     </c:forEach>
-                </table></td>
+                </table>
+                    <table width="150" border="0" align="center" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <br/> <br/>
+                            <td>
+                                <div align="center"><span class="c-text"><a
+                                        href="<c:url value='prev/'/>">Prev</a></span></div>
+                            </td>
+                            <td>
+                                <div align="center"><span class="c-text"><a
+                                        href="<c:url value='next/'/>">Next</a></span></div>
+                            </td>
+                        </tr>
+                    </table>
+                    <p>&nbsp;</p></td>
                 <td width="20%" align="right" valign="middle">&nbsp;</td>
             </tr>
         </table>
@@ -138,7 +152,7 @@
             </td>
             <td>
                 <input:checkbox path="isAdmin" value="true" label=" yes"/>
-                <%--<form:checkboxes items="${user.isAdmin}" path="isAdmin"/>--%>
+                    <%--<form:checkboxes items="${user.isAdmin}" path="isAdmin"/>--%>
             </td>
         </tr>
         <tr>
@@ -148,11 +162,16 @@
                 </c:if>
                 <c:if test="${empty user.name}">
                     <input type="submit" value="<spring:message text="Add User"/>"/>
-                </c:if>
-            </td>
+                </c:if></td>
         </tr>
     </table><img src="http://s013.radikal.ru/i322/1604/37/3a73ada63cfc.jpg" width="500" height="157" align="absbottom">    </div>
 </form:form>
+
+
+<%--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+
+
+<%--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
 
 </body>
 </html>

@@ -1,7 +1,8 @@
 package com.usermanager.dao;
 
-import com.mysql.jdbc.log.LogFactory;
+import com.usermanager.model.Pages;
 import com.usermanager.model.User;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -14,12 +15,11 @@ import java.util.List;
 @Repository
 public class UserDaoImpl implements UserDao {
     private static final Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
+    private SessionFactory sessionFactory;
 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-
-    private SessionFactory sessionFactory;
 
     @Override
     public void addUser(User user) {
@@ -54,7 +54,24 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
+
     @Override
+    @SuppressWarnings("unchecked")
+    public List<User> listUsers() {
+        Session session = sessionFactory.openSession();
+        int min = 0;
+        int max = ((Long) session.createQuery("select count(*) from User").uniqueResult()).intValue();
+        Query query = session.createQuery("FROM User");
+        query.setFirstResult(new Pages().getPage());
+        query.setMaxResults(new Pages().getPage() + new Pages().getSizePage());
+        return query.list();
+    }
+    /*
+
+    THIS IS A DEFAULT METHOD -------------------------------------
+    return list objects
+
+        @Override
     @SuppressWarnings("unchecked")
     public List<User> listUsers() {
         Session session = this.sessionFactory.getCurrentSession();
@@ -64,4 +81,43 @@ public class UserDaoImpl implements UserDao {
         }
         return userList;
     }
+
+    --------------------------------------------------------------
+
+    THIS IS MY METHOD ============================================
+    return part of list objects
+
+        @Override
+    @SuppressWarnings("unchecked")
+    public List<User> listUsers() {
+        Session session = this.sessionFactory.getCurrentSession();
+        Query query = session.createQuery("FROM User");
+        query.setFirstResult(0);
+        query.setMaxResults(5);
+        return query.list();
+    }
+
+    ===============================================================
+
+    THIS IS MY METHOD #2 ++++++++++++++++++++++++++++++++++++++++++
+    return part of list objects
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<User> listUsers() {
+
+        Session session = sessionFactory.openSession();
+        Criteria criteria = session.createCriteria(User.class);
+        criteria.setFirstResult(10);
+        criteria.setMaxResults(20);
+        List<User> firstPage = criteria.list();
+        Criteria criteriaCount = session.createCriteria(User.class);
+        criteriaCount.setProjection(Projections.rowCount());
+        Long count = (Long) criteriaCount.uniqueResult();
+        return firstPage;
+
+
+    +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+     */
 }

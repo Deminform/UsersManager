@@ -1,6 +1,7 @@
 package com.usermanager.controller;
 
 
+import com.usermanager.model.Pages;
 import com.usermanager.model.User;
 import com.usermanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +57,19 @@ public class UserController {
     public String userData(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", this.userService.getUserById(id));
         return "userdata";
+    }
+
+    // ============================== Page ================================
+
+    @RequestMapping("next/")
+    public String nextPage() {
+        new Pages().nextPage();
+        return "redirect:/users";
+    }
+
+    @RequestMapping("prev/")
+    public String prevPage() {
+        new Pages().prevPage();
+        return "redirect:/users";
     }
 }
