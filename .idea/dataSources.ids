@@ -11,7 +11,7 @@
       <table id="2" parent="1" name="test"/>
       <column id="3" parent="2" name="id">
         <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
+        <data-type>int(8)</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
       <column id="4" parent="2" name="name">

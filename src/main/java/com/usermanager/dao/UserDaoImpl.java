@@ -16,6 +16,8 @@ import java.util.List;
 public class UserDaoImpl implements UserDao {
     private static final Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
     private SessionFactory sessionFactory;
+    private Pages pages = new Pages();
+    private int countPage = 0;
 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
@@ -54,18 +56,40 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
-
     @Override
     @SuppressWarnings("unchecked")
     public List<User> listUsers() {
-        Session session = sessionFactory.openSession();
-        int min = 0;
-        int max = ((Long) session.createQuery("select count(*) from User").uniqueResult()).intValue();
+        Session session = this.sessionFactory.getCurrentSession();
+        pages.setMaxSizePage(((Long) session.createQuery("select count(*) from User").uniqueResult()).intValue());
         Query query = session.createQuery("FROM User");
-        query.setFirstResult(new Pages().getPage());
-        query.setMaxResults(new Pages().getPage() + new Pages().getSizePage());
+        query.setFirstResult(pages.getPage());
+        query.setMaxResults(pages.getSizePage());
         return query.list();
     }
+
+    public void nextPage() {
+        Session session = this.sessionFactory.getCurrentSession();
+        pages.setMaxSizePage(((Long) session.createQuery("select count(*) from User").uniqueResult()).intValue());
+        if (!((pages.getPage() + pages.getSizePage()) >= pages.getMaxSizePage())) {
+            pages.setPage(pages.getPage() + pages.getSizePage());
+            countPage++;
+        }
+    }
+
+    public void prevPage() {
+        Session session = this.sessionFactory.getCurrentSession();
+        pages.setMaxSizePage(((Long) session.createQuery("select count(*) from User").uniqueResult()).intValue());
+        if (!((pages.getPage() - pages.getSizePage()) < 0)) {
+            pages.setPage(pages.getPage() - pages.getSizePage());
+            countPage--;
+        }
+    }
+
+    public void firstPage() {
+        pages.setPage(0);
+        countPage = 0;
+    }
+
     /*
 
     THIS IS A DEFAULT METHOD -------------------------------------
@@ -118,6 +142,18 @@ public class UserDaoImpl implements UserDao {
 
 
     +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<User> listUsers() {
+        Session session = this.sessionFactory.openSession();
+        this.pages.setMaxSizePage(((Long) session.createQuery("select count(*) from User").uniqueResult()).intValue());
+        Query query = session.createQuery("FROM User");
+        query.setFirstResult(this.pages.getPage());
+        query.setMaxResults(5);
+        return query.list();
+    }
+
 
      */
 }

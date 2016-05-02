@@ -1,7 +1,6 @@
 package com.usermanager.controller;
 
 
-import com.usermanager.model.Pages;
 import com.usermanager.model.User;
 import com.usermanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,15 +60,21 @@ public class UserController {
 
     // ============================== Page ================================
 
-    @RequestMapping("next/")
+    @RequestMapping("next")
     public String nextPage() {
-        new Pages().nextPage();
+        this.userService.nextPage();
         return "redirect:/users";
     }
 
-    @RequestMapping("prev/")
+    @RequestMapping("prev")
     public String prevPage() {
-        new Pages().prevPage();
+        this.userService.prevPage();
+        return "redirect:/users";
+    }
+
+    @RequestMapping("firstPage")
+    public String firstPage() {
+        this.userService.firstPage();
         return "redirect:/users";
     }
 }

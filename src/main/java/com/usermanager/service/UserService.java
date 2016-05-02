@@ -6,13 +6,20 @@ import com.usermanager.model.User;
 import java.util.List;
 
 public interface UserService {
-    public void addUser(User user);
 
-    public void updateUser(User user);
+    void firstPage();
 
-    public void removeUser(int id);
+    void prevPage();
 
-    public User getUserById(int id);
+    void nextPage();
 
-    public List<User> listUsers();
+    void addUser(User user);
+
+    void updateUser(User user);
+
+    void removeUser(int id);
+
+    User getUserById(int id);
+
+    List<User> listUsers();
 }

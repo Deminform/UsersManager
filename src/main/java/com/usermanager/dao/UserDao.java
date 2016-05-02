@@ -6,15 +6,20 @@ import com.usermanager.model.User;
 import java.util.List;
 
 public interface UserDao {
+    void firstPage();
 
-    public void addUser(User user);
+    void prevPage();
 
-    public void updateUser(User user);
+    void nextPage();
 
-    public void removeUser(int id);
+    void addUser(User user);
 
-    public User getUserById(int id);
+    void updateUser(User user);
 
-    public List<User> listUsers();
+    void removeUser(int id);
+
+    User getUserById(int id);
+
+    List<User> listUsers();
 
 }

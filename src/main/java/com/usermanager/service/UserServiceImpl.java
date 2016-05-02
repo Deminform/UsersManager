@@ -44,4 +44,23 @@ public class UserServiceImpl implements UserService{
     public List<User> listUsers() {
         return this.userDao.listUsers();
     }
+
+    @Override
+    @Transactional
+    public void nextPage() {
+        this.userDao.nextPage();
+    }
+
+    @Override
+    @Transactional
+    public void prevPage() {
+        this.userDao.prevPage();
+    }
+
+    @Override
+    @Transactional
+    public void firstPage() {
+        this.userDao.firstPage();
+    }
+
 }

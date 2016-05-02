@@ -71,12 +71,14 @@
                 <th width="120" align="center" valign="middle">Name</th>
                 <th width="120" align="center" valign="middle">Is Admin</th>
                 <th width="120" align="center" valign="middle">Age</th>
+                <th width="120" align="center" valign="middle">Created date</th>
             </tr>
             <tr>
                 <td align="center" valign="middle">${user.id}</td>
                 <td align="center" valign="middle">${user.name}</td>
                 <td align="center" valign="middle">${user.isAdmin.toString()}</td>
                 <td align="center" valign="middle">${user.age}</td>
+                <td align="center" valign="middle">${user.createdDate}</td>
             </tr>
         </table></td>
         <td width="20%" height="70%" align="right" valign="middle">&nbsp;</td>
