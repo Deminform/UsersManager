@@ -2,6 +2,7 @@ package com.usermanager.model;
 
 
 public class Pages {
+
     private int page;
     private int sizePage;
     private int maxSizePage;

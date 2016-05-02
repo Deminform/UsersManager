@@ -16,7 +16,7 @@ import java.util.List;
 public class UserController {
     private UserService userService;
 
-    @Autowired(required = true)
+    @Autowired
     @Qualifier(value = "userService")
     public void setUserService(UserService userService) {
         this.userService = userService;

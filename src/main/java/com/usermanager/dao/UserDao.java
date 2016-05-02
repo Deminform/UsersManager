@@ -6,6 +6,7 @@ import com.usermanager.model.User;
 import java.util.List;
 
 public interface UserDao {
+
     void firstPage();
 
     void prevPage();

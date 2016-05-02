@@ -41,7 +41,6 @@ public class UserDaoImpl implements UserDao {
     public void removeUser(int id) {
         Session session = this.sessionFactory.getCurrentSession();
         User user = (User) session.load(User.class, new Integer(id));
-
         if (user!=null) {
             session.delete(user);
         }

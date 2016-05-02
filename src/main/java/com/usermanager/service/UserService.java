@@ -6,7 +6,6 @@ import com.usermanager.model.User;
 import java.util.List;
 
 public interface UserService {
-
     void firstPage();
 
     void prevPage();
