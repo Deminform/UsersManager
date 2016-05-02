@@ -45,15 +45,19 @@
         .tg .tg-4eph {
             background-color: #f9f9f9
         }
+
         .text {
             font-family: Palatino Linotype, Book Antiqua, Palatino, serif;
         }
+
         textC {
             font-family: Century Gothic;
         }
+
         txtxt {
             font-family: Century Gothic;
         }
+
         .c-text {
             font-family: Century Gothic;
         }
@@ -87,17 +91,17 @@
                 <div align="center">
                     <table align="left">
                         <c:if test="${!empty user.name}">
-                        <tr>
-                            <td width="30%" class="textc">
-                                <form:label path="id">
-                                    <spring:message text="ID"/>
-                                </form:label>
-                            </td>
-                            <td align="center" valign="middle" class="textc">
-                                <form:input path="id" readonly="true" size="8" disabled="true"/>
-                                <form:hidden path="id"/>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td width="30%" class="textc">
+                                    <form:label path="id">
+                                        <spring:message text="ID"/>
+                                    </form:label>
+                                </td>
+                                <td align="center" valign="middle" class="textc">
+                                    <form:input path="id" readonly="true" size="8" disabled="true"/>
+                                    <form:hidden path="id"/>
+                                </td>
+                            </tr>
                         </c:if>
                         <tr>
                             <td width="30%" class="textc">
@@ -145,31 +149,16 @@
             </form:form></td>
         <td width="250" align="left" valign="top">
 
-            <c:url var="searchAction" value='/userdata/${user.id}'/>
-
-            <form:form action="${searchAction}" commandName="user">
-                <div align="center">
-                    <table align="left">
-                        <tr>
-                            <td width="30%" class="textc">
-                                <form:label path="id">
-                                    <spring:message text="id"/>
-                                </form:label>
-                            </td>
-                            <td align="center" valign="middle" class="textc">
-                                <form:input path="id"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="30%" align="center" valign="bottom">
-                            </td>
-                            <td align="center" valign="bottom">
-                                <input type="submit" value="<spring:message text="Search User"/>"/>
-                            </td>
-                        </tr>
-                    </table>
+            <form action="search">
+                <div class="row">
+                    <div class="textc">
+                        <div class="textc"><label for="name"></label>
+                            <input type="text" name="name" id="name"></div>
+                    </div>
+                    <div class="textc"><input class="btn btn-success" type='submit' value='Search'/></div>
                 </div>
-            </form:form></td>
+            </form>
+        </td>
         <td align="center" valign="top">
             <table align="center" class="tg">
                 <tr>
@@ -185,7 +174,7 @@
                     <th width="87" align="center" valign="middle">
                         <div align="center"><strong><span class="c-text">Delete</span></strong></div>
                     </th>
-            </tr>
+                </tr>
                 <c:forEach items="${listUsers}" var="user">
                     <tr>
                         <td align="center" valign="middle">
@@ -205,7 +194,7 @@
                         </td>
                     </tr>
                 </c:forEach>
-        </table>
+            </table>
             <table width="50%" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr><br/>
                     <br/>

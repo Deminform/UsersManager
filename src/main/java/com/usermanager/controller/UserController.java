@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -56,6 +56,14 @@ public class UserController {
     public String userData(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", this.userService.getUserById(id));
         return "userdata";
+    }
+
+    // ========================= Search by name ===========================
+
+    @RequestMapping("search")
+    public ModelAndView searchUsers(@RequestParam("name") String name) {
+        List<User> searchpage = this.userService.getUserByName(name);
+        return new ModelAndView("searchpage", "searchpage", searchpage);
     }
 
     // ============================== Page ================================

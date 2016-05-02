@@ -20,6 +20,8 @@ public interface UserDao {
 
     User getUserById(int id);
 
+    List<User> getUserByName(String name);
+
     List<User> listUsers();
 
 }

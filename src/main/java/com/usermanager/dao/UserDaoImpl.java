@@ -58,6 +58,14 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     @SuppressWarnings("unchecked")
+    public List<User> getUserByName(String name) {
+        Session session = this.sessionFactory.getCurrentSession();
+        Query query = session.createQuery("FROM User WHERE name=" + name);
+        return query.list();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
     public List<User> listUsers() {
         Session session = this.sessionFactory.getCurrentSession();
         pages.setMaxSizePage(((Long) session.createQuery("select count(*) from User").uniqueResult()).intValue());
