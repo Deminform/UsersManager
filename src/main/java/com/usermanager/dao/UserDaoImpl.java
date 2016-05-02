@@ -60,7 +60,7 @@ public class UserDaoImpl implements UserDao {
     @SuppressWarnings("unchecked")
     public List<User> getUserByName(String name) {
         Session session = this.sessionFactory.getCurrentSession();
-        Query query = session.createQuery("FROM User WHERE name=" + name);
+        Query query = session.createQuery("FROM User WHERE name='" + name + "'");
         return query.list();
     }
 

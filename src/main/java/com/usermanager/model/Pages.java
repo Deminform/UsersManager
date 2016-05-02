@@ -7,7 +7,7 @@ public class Pages {
     private int maxSizePage;
 
     public Pages() {
-        this.sizePage = 5;
+        this.sizePage = 10;
         this.page = 0;
     }
 

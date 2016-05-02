@@ -77,7 +77,7 @@
             <div align="center"><strong><span class="c-text">Add a User</span></strong></div>
         </td>
         <td width="250" align="left" valign="middle">
-            <div align="center"><strong><span class="c-text">Search</span></strong></div>
+            <div align="center"><strong><span class="c-text">Search by name</span></strong></div>
         </td>
         <td align="center" valign="middle">
             <div align="center"><strong><span class="c-text">User List</span></strong></div>
@@ -147,19 +147,24 @@
                     </table>
                 </div>
             </form:form></td>
-        <td width="250" align="left" valign="top">
-
+        <td width="250" align="center" valign="top">
             <form action="search">
                 <div class="row">
                     <div class="textc">
-                        <div class="textc"><label for="name"></label>
-                            <input type="text" name="name" id="name"></div>
+                        <div class="textc">
+                            <p>
+                                <label for="name"></label>
+                                <input type="text" name="name" id="name">
+                            </p>
+                        </div>
                     </div>
+                    <br/>
                     <div class="textc"><input class="btn btn-success" type='submit' value='Search'/></div>
                 </div>
             </form>
+            <div align="center"></div>
         </td>
-        <td align="center" valign="top">
+        <td rowspan="2" align="center" valign="top">
             <table align="center" class="tg">
                 <tr>
                     <th width="74" align="center" valign="middle">
@@ -221,26 +226,8 @@
         <td width="500" colspan="2" align="left" valign="top"><img
                 src="http://s013.radikal.ru/i322/1604/37/3a73ada63cfc.jpg" width="500" height="157" align="absbottom">
         </td>
-        <td>&nbsp;</td>
     </tr>
 </table>
-<h1 align="center" class="c-text">&nbsp;</h1>
-
-
-<div align="center">
-    <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
-        <tr align="center">
-            <td width="20%" align="left" valign="middle"><a href="../../index.jsp" class="c-text"></a></td>
-            <td width="60%" align="center" valign="middle"><p>&nbsp;</p></td>
-            <td width="20%" align="right" valign="middle">&nbsp;</td>
-        </tr>
-    </table>
-</div>
-
-
-<h1 align="center" class="tg">&nbsp;</h1>
-
-
 </body>
 </html>
 
